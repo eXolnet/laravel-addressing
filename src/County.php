@@ -18,17 +18,24 @@ class County extends Model {
 	 */
 	protected $fillable = ['country_id', 'code'];
 
-
 	/**
 	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
 	 */
 	public function country()
 	{
-		return $this->belongsTo('Exolnet\Addressing\Country');
+		return $this->belongsTo(Country::class);
 	}
 
 	/**
-	 * @return Exolnet\Addressing\Country
+	 * @return int
+	 */
+	public function getId()
+	{
+		return $this->id;
+	}
+
+	/**
+	 * @return \Exolnet\Addressing\Country
 	 */
 	public function getCountry()
 	{
@@ -36,7 +43,7 @@ class County extends Model {
 	}
 
 	/**
-	 * @param Exolnet\Addressing\Country $country
+	 * @param \Exolnet\Addressing\Country $country
 	 * @return $this
 	 */
 	public function setCountry(Country $country)

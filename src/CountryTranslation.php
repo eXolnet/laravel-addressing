@@ -16,34 +16,14 @@ class CountryTranslation extends Model {
 	 *
 	 * @var array
 	 */
-	protected $fillable = ['country_id', 'name', 'locale'];
-
-
-	/**
-	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
-	 */
-	public function country()
-	{
-		return $this->belongsTo('Exolnet\Addressing\Country');
-	}
+	protected $fillable = ['name', 'locale'];
 
 	/**
-	 * @return Exolnet\Addressing\Country
+	 * @return int
 	 */
-	public function getCountry()
+	public function getId()
 	{
-		return $this->country;
-	}
-
-	/**
-	 * @param Exolnet\Addressing\Country $country
-	 * @return $this
-	 */
-	public function setCountry(Country $country)
-	{
-		$this->country()->associate($country);
-
-		return $this;
+		return $this->id;
 	}
 
 	/**

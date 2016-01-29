@@ -18,6 +18,13 @@ class Country extends Model {
 	 */
 	protected $fillable = ['code2', 'code3'];
 
+	/**
+	 * @return int
+	 */
+	public function getId()
+	{
+		return $this->id;
+	}
 
 	/**
 	 * @return string

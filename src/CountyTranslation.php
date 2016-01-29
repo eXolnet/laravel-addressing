@@ -18,32 +18,12 @@ class CountyTranslation extends Model {
 	 */
 	protected $fillable = ['county_id', 'name', 'locale'];
 
-
 	/**
-	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+	 * @return int
 	 */
-	public function county()
+	public function getId()
 	{
-		return $this->belongsTo('Exolnet\Addressing\County');
-	}
-
-	/**
-	 * @return Exolnet\Addressing\County
-	 */
-	public function getCounty()
-	{
-		return $this->county;
-	}
-
-	/**
-	 * @param Exolnet\Addressing\County $county
-	 * @return $this
-	 */
-	public function setCounty(County $county)
-	{
-		$this->county()->associate($county);
-
-		return $this;
+		return $this->id;
 	}
 
 	/**
