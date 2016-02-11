@@ -1,8 +1,10 @@
 <?php namespace Exolnet\Addressing;
 
+use Exolnet\Translation\Traits\Translatable;
 use \Illuminate\Database\Eloquent\Model;
 
 class Country extends Model {
+	use Translatable;
 
 	/**
 	 * The database table used by the model.
@@ -17,6 +19,16 @@ class Country extends Model {
 	 * @var array
 	 */
 	protected $fillable = ['code2', 'code3'];
+
+	/**
+	 * @var array
+	 */
+	protected $translatedAttributes = ['name'];
+
+	/**
+	 * @var bool
+	 */
+	public $timestamps = false;
 
 	/**
 	 * @return int

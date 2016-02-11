@@ -19,6 +19,11 @@ class CountryTranslation extends Model {
 	protected $fillable = ['name', 'locale'];
 
 	/**
+	 * @var bool
+	 */
+	public $timestamps = false;
+
+	/**
 	 * @return int
 	 */
 	public function getId()

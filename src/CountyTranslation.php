@@ -19,6 +19,11 @@ class CountyTranslation extends Model {
 	protected $fillable = ['county_id', 'name', 'locale'];
 
 	/**
+	 * @var bool
+	 */
+	public $timestamps = false;
+
+	/**
 	 * @return int
 	 */
 	public function getId()

@@ -1,8 +1,10 @@
 <?php namespace Exolnet\Addressing;
 
+use Exolnet\Translation\Traits\Translatable;
 use \Illuminate\Database\Eloquent\Model;
 
 class County extends Model {
+	use Translatable;
 
 	/**
 	 * The database table used by the model.
@@ -16,7 +18,17 @@ class County extends Model {
 	 *
 	 * @var array
 	 */
-	protected $fillable = ['country_id', 'code'];
+	protected $fillable = ['code'];
+
+	/**
+	 * @var array
+	 */
+	protected $translatedAttributes = ['name'];
+
+	/**
+	 * @var bool
+	 */
+	public $timestamps = false;
 
 	/**
 	 * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
