@@ -31,6 +31,14 @@ class Country extends Model {
 	public $timestamps = false;
 
 	/**
+	 * @return \Illuminate\Database\Eloquent\Relations\HasMany
+	 */
+	public function counties()
+	{
+		return $this->hasMany(County::class);
+	}
+
+	/**
 	 * @return int
 	 */
 	public function getId()
@@ -93,5 +101,70 @@ class Country extends Model {
 		$this->name = $name;
 
 		return $this;
+	}
+
+	/**
+	 * @return \Illuminate\Database\Eloquent\Collection
+	 */
+	public function getCounties()
+	{
+		return $this->counties;
+	}
+
+	/**
+	 * @param array $counties
+	 * @return $this
+	 */
+	public function setCounties(array $counties)
+	{
+		return $this->clearCounties()->addCounties($counties);
+	}
+
+	/**
+	 * @return $this
+	 */
+	public function clearCounties()
+	{
+		$this->counties()->delete();
+
+		return $this;
+	}
+
+	/**
+	 * @param \Exolnet\Addressing\County $county
+	 * @return $this
+	 */
+	public function addCounty(County $county)
+	{
+		$this->counties()->save($county);
+
+		return $this;
+	}
+
+	/**
+	 * @param array $counties
+	 * @return $this
+	 */
+	public function addCounties(array $counties)
+	{
+		$this->counties()->saveMany($counties);
+
+		return $this;
+	}
+
+	/**
+	 * @return int
+	 */
+	public function countCounties()
+	{
+		return count($this->getCounties());
+	}
+
+	/**
+	 * @return bool
+	 */
+	public function hasCounties()
+	{
+		return $this->countCounties() > 0;
 	}
 }
